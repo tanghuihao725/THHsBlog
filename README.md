@@ -1,7 +1,8 @@
 # THHsBlog
 The personal blog of THH  
 Review:    https://www.tanghuihao.com
-
+ContactMe-email: 18210240177@fudan.edu.cn
+ContactMe-qq: 335303710
 
 
 ## Project setup
