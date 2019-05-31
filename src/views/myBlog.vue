@@ -42,11 +42,11 @@
           <span class="glyphicon glyphicon-tag" v-show="blog.tags.length"></span>
           <span v-for="(tag,id) in blog.tags" class="tag" :key="id">{{tag}}</span>
         </p>
-        <p class="content">{{snipped(blog.blog_body.replace(/[#`!\*\[\]-]/g," "))}}</p>
-        <div class="readmore">
+        <!-- <p class="content">{{snipped(blog.blog_body.replace(/[#`!\*\[\]-]/g," "))}}</p> -->
+        <!-- <div class="readmore">
           阅读全文
           <span class="glyphicon glyphicon-menu-right"></span>
-        </div>
+        </div> -->
         <hr>
       </router-link>
     </transition-group>

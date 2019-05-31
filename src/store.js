@@ -48,7 +48,7 @@ export const store = new Vuex.Store({
             quote: true, // 引用
             ol: true, // 有序列表
             link: false, // 链接
-            imagelink: false, // 图片链接
+            imagelink: true, // 图片链接
             help: false, // 帮助
             code: true, // code
             subfield: false, // 是否需要分栏

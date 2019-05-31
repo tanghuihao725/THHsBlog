@@ -53,6 +53,9 @@
         :subfield="isMobile?false:true"
         :scrollStyle="true"
         id="md"
+        @imgAdd="$imgAdd"
+        @imgDel="$imgDel"
+        ref="md"
         :boxShadow="false"
       />
     </div>
@@ -155,6 +158,19 @@ export default {
           })
           .catch(err => console.log(err));
       }
+    },
+    $imgAdd(pos, $file){
+      self = this
+      let file = Bmob.File($file.name, $file);
+      file.save().then(res=>{
+        const url = res[0].url
+        self.$refs.md.$img2Url(pos, url);
+      })
+    },
+    $imgDel(file){
+        const url = file[1]
+        const del = Bmob.File()
+        del.destroy(url)
     }
   },
   computed: mapGetters(["user", "isMobile", "toolbars", "toolbars_phone"]),
