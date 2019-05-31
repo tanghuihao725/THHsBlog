@@ -117,6 +117,8 @@ export default {
           query_comment.find().then(res=>{
             res.forEach(data=>query_comment.destroy(data.objectId))
           })
+          const del = Bmob.File()
+          del.destroy(this.blog.imgs)
           setTimeout(() => {
             this.$router.push("/myblog");
           }, 0);

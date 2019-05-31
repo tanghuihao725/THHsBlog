@@ -75,6 +75,7 @@ export default {
   data() {
     return {
       self: this,
+      imgs:[],
       myroute: __dirname,
       query_tag: null,
       query_blog: null,
@@ -115,6 +116,7 @@ export default {
           res.set("blog_title", this.title);
           res.set("tags", this.checkedLabels);
           res.set("author", this.user);
+          res.set("imgs",this.imgs)
           // 设置置顶因子
           let top_factor = 0;
           if (this.istop) {
@@ -164,11 +166,15 @@ export default {
       let file = Bmob.File($file.name, $file);
       file.save().then(res=>{
         const url = res[0].url
+        this.imgs.push(url)
         self.$refs.md.$img2Url(pos, url);
       })
     },
     $imgDel(file){
         const url = file[1]
+        this.imgs = this.imgs.filter(imgUrl=>{
+          return imgUrl!=url
+        })
         const del = Bmob.File()
         del.destroy(url)
     }
@@ -184,6 +190,7 @@ export default {
       this.blogId = this.$route.params.id;
       this.query_blog.get(this.blogId).then(res => {
         this.blog = res;
+        this.imgs = this.blog.imgs;
         this.title = this.blog.blog_title;
         this.checkedLabels = this.blog.tags.map(tag => tag);
         this.body = this.blog.blog_body;

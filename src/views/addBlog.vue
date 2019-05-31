@@ -88,7 +88,8 @@ export default {
         newtag: "",
         checkedLabels: [],
         istop: false,
-        body: ""
+        body: "",
+        imgs:[],
       }
     };
   },
@@ -113,6 +114,7 @@ export default {
         query.set("blog_body", this.ruleForm.body);
         query.set("author", this.user);
         query.set("tags", this.ruleForm.checkedLabels.map(lab => lab.tag_name));
+        query.set("imgs",this.ruleForm.imgs)
         // 设置置顶因子
         let top_factor=0;
         if(this.ruleForm.istop){
@@ -196,13 +198,16 @@ export default {
       self = this
       let file = Bmob.File($file.name, $file);
       file.save().then(res=>{
-        console.log(res)
         const url = res[0].url
+        this.ruleForm.imgs.push(url)
         self.$refs.md.$img2Url(pos, url);
       })
     },
     $imgDel(file){
         const url = file[1]
+        this.ruleForm.imgs = this.ruleForm.imgs.filter(imgUrl=>{
+          return imgUrl!=url
+        })
         const del = Bmob.File()
         del.destroy(url)
     }
