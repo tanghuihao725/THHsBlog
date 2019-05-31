@@ -25,8 +25,6 @@
         </el-tab-pane>
       </el-tabs>
     </header>
-
-    <timeline/>
   </div>
 </template>
 
@@ -46,10 +44,7 @@ export default {
   },
   created() {},
   methods: {
-    handleClick(tab, event) {
-      console.log(this.activeName);
-      console.log(tab, event);
-    }
+    
   },
   computed: mapGetters(["isMobile"]),
   components: {

@@ -1,6 +1,6 @@
 <template>
   <div @click.stop class="mywrapper">
-    <el-carousel :interval="3000" arrow="always" height="580px" id="card" v-if="!isMobile">
+    <el-carousel :interval="3000" arrow="never" height="580px" id="card" v-if="!isMobile">
       <el-carousel-item>
         <img src="../assets/1.jpg" alt>
       </el-carousel-item>
@@ -18,7 +18,7 @@
       </el-carousel-item>
     </el-carousel>
 
-    <el-carousel :interval="3000" arrow="always" height="470px" id="card" v-if="isMobile">
+    <el-carousel :interval="3000" arrow="never" height="470px" id="card" v-if="isMobile">
       <el-carousel-item>
         <img src="../assets/4.jpg" alt>
       </el-carousel-item>
